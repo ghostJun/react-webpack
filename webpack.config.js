@@ -20,7 +20,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   // 模块
-  module: {},
+  module: { rules: [{}] },
   // 插件
   plugins: [htmlPlugin],
   // 开发服务器配置
