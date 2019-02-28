@@ -91,3 +91,40 @@ webpack4不再支持extract-text-webpack-plugin对css进行拆分
 ```
 
 webpack读取loader**从右至左**，因此loader加载顺序必须严格按照['style-loader','css-loader','less-loader'/'sass-loader']
+
+## 使用CSS Modules设置样式
+```
+{
+    test: /\.less$/,
+    use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+        {
+            loader: 'css-loader',
+            options: {
+            modules: true,
+            }
+        },
+        { loader: 'less-loader' }
+        ]
+    })
+}
+
+页面引入就需要进行修改
+
+import './styles.less'; ===>  import styles from './styles.less';
+
+<div className="font"/> ===> <div className={styles.font}/>
+
+```
+
+## classnames的使用
+```
+若需要定义多个className
+npm i -D classnames
+
+页面使用
+import classNames from 'classnames';
+<div className={classNames(styles.font, styles.bg)}/>
+
+```

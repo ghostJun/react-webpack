@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import './styles.less';
-
+import classNames from 'classnames';
+import styles from './styles.less';
 class Login extends Component {
   render() {
-    return <div className="font">Hello World</div>;
+    return (
+      <div className={classNames(styles.font, styles.bg)}>Hello World</div>
+    );
   }
 }
 

@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  // 多Html配置
+  devtool: 'source-map',
   // 入口(entry)
   entry: './src/index.js',
   // 出口(output)
@@ -28,13 +28,26 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader'
+          }
+        ]
       },
       {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [{ loader: 'css-loader' }, { loader: 'less-loader' }]
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+              }
+            },
+            { loader: 'less-loader' }
+          ]
         })
       }
     ]
