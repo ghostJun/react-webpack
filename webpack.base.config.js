@@ -39,7 +39,7 @@ module.exports = {
                     use: [
                         {
                             loader: 'css-loader',
-                            options: {modules: false}
+                            options: {modules: true}
                         },
                         {loader: 'less-loader'}
                     ]

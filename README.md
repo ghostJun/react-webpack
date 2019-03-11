@@ -128,3 +128,31 @@ import classNames from 'classnames';
 <div className={classNames(styles.font, styles.bg)}/>
 
 ```
+
+## 引入antd（配置中最大的坑）
+```
+npm i antd -D
+
+关键点在于需要引入下面的包
+
+npm i babel-plugin-import -D
+
+在.babelrc中引入以下插件
+
+"plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "lib"
+      },
+      "ant"
+    ]
+  ]
+  
+在入口文件中引入antd.css
+
+import 'antd/dist/antd.css';
+
+-- done --
+```
