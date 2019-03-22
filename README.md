@@ -156,3 +156,50 @@ import 'antd/dist/antd.css';
 
 -- done --
 ```
+
+## Redux React-Redux
+
+### redux组成
+1. action
+2. state
+3. reducer
+
+```
+// 引入redux
+import {createStore} from 'redux';
+
+// reducer
+const countReducer = function(state = {count: 1}, action) {
+    switch(action.type) {
+        case 'COUNT_ADD':
+            return {
+                ...state, count: state.count + 1
+            }
+    }
+        default: 
+            return state
+}
+
+const store = createStore(countReducer);
+
+console.log(store);
+console.log(store.getState);
+
+
+```
+
+#### action
+
+组成
+1. type     用于区分是何种操作
+2. payload  传递的数据
+
+```
+// dispatch 用于分发任务(store自带方法)
+const action = {
+    type: 'COUNT_ADD',
+    payload: {}, 
+}
+store.dispatch(action);
+
+```
