@@ -28,8 +28,8 @@ class ReduxDemo extends Component {
         return (
             <div>
                 <h1>{this.state.num}</h1>
-                <Button onClick={this.addItem.bind(this)}>Add</Button>
-                <Button onClick={this.removeItem.bind(this)}>Remove</Button>
+                <Button onClick={this.addItem.bind(this)} type="primary">Add</Button>
+                <Button onClick={this.removeItem.bind(this)} type="default">Remove</Button>
             </div>
         );
     }
