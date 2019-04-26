@@ -132,6 +132,17 @@ import './styles.less'; ===>  import styles from './styles.less';
 
 ```
 
+## 压缩css
+```
+cnpm i optimize-css-assets-webpack-plugin -D
+cnpm i cssnano -D
+```
+
+## 压缩js
+```
+cnpm i uglifyjs-webpack-plugin -D
+```
+
 ## classnames的使用
 ```
 若需要定义多个className

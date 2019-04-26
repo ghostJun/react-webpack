@@ -11,6 +11,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+// 压缩css
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+// 压缩js
+const Uglifyjs = require('uglifyjs-webpack-plugin');
+
 module.exports = function (env) {
     const isDev = env.dev || false;
     console.log('=========================');
@@ -19,7 +25,7 @@ module.exports = function (env) {
 
     const buildPath = isDev ? '../dist/dev' : '../dist/prod';
 
-    const devtool = isDev ? 'inline-source-map' : 'source-map';
+    const devtool = isDev ? 'inline-source-map' : 'inline-source-map';
 
     return {
         mode: isDev ? 'development' : 'production',
@@ -81,7 +87,9 @@ module.exports = function (env) {
                 filename: isDev ? './static/css/[name].css' : './static/css/[name].[hash].css',
                 chunkFilename: isDev ? '[id].css' : '[id].[hash].css',
             }),
-            new webpack.HotModuleReplacementPlugin()
+            new webpack.HotModuleReplacementPlugin(),
+            new OptimizeCSSAssetsPlugin(),
+            new Uglifyjs()
         ],
         devServer: {
             inline: true,//do not use iframe for the page, true is default
