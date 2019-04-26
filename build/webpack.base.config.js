@@ -12,11 +12,6 @@ const CleanWebpackPlugin = require('_clean-webpack-plugin@1.0.1@clean-webpack-pl
 module.exports = {
     // 入口(entry)
     entry: './src/index.js',
-    // 出口(output)
-    // output: {
-    //     filename: 'bundle.js',
-    //     path: path.resolve(__dirname, '../dist')
-    // },
     // 模块
     module: {
         rules: [
