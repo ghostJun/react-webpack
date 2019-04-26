@@ -7,4 +7,4 @@ import {Provider} from 'react-redux';
 import store from './store/store';
 
 
-ReactDom.render(<Provider store={store}><Router/></Provider>, document.getElementById('root'));
+ReactDom.render(<Router/>, document.getElementById('root'));

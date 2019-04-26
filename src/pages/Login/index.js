@@ -5,7 +5,7 @@ import styles from './styles.less';
 class Login extends Component {
     render() {
         return (
-            <div className={styles.bg}>Hello World <Button type='primary'>测试</Button></div>
+            <div className={styles.font}>Hello World <Button type='primary'>测试</Button></div>
         );
     }
 }
