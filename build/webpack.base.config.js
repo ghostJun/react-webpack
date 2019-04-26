@@ -2,22 +2,21 @@
 const path = require('path');
 
 // html打包插件
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('_html-webpack-plugin@3.2.0@html-webpack-plugin');
 
 // css拆分插件
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('_extract-text-webpack-plugin@4.0.0-beta.0@extract-text-webpack-plugin');
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('_clean-webpack-plugin@1.0.1@clean-webpack-plugin');
 
 module.exports = {
-    devtool: 'source-map',
     // 入口(entry)
     entry: './src/index.js',
     // 出口(output)
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
-    },
+    // output: {
+    //     filename: 'bundle.js',
+    //     path: path.resolve(__dirname, '../dist')
+    // },
     // 模块
     module: {
         rules: [
@@ -27,12 +26,10 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
-            },
-            {
+            }, {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
-            },
-            {
+            }, {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
@@ -44,6 +41,19 @@ module.exports = {
                         {loader: 'less-loader'}
                     ]
                 })
+            }, {
+                test: /\.(png|jpg|jepg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name]-[hash:5].min.[ext]',
+                            limit: 200000,
+                            publicPath: '../img/',
+                            outputPath: 'static/img/'
+                        }
+                    }
+                ]
             }
         ]
     },

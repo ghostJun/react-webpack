@@ -38,6 +38,20 @@ npm i -D @babel/preset-react
 npm i -D react react-dom
 ```
 
+## 配置热加载
+```
+引入webpack
+const webpack = require('webpack');
+插件中增加热加载
+plugins: [
+    new webpack.HotModuleReplacementPlugin()
+]
+devServer中打开热加载
+devServer: {
+    hot:true
+}
+```
+
 ## 配置webpack.config.js及.babelrc
 ```
 webpack.config.js增加对jsx的支持
@@ -129,6 +143,25 @@ import classNames from 'classnames';
 
 ```
 
+## 图片引入
+```
+cnpm i file-loader -D
+{
+    test: /\.(png|jpg|jepg|gif)$/,
+    use: [
+        {
+            loader: 'file-loader',
+            options: {
+                name: '[name]-[hash:5].min.[ext]',
+                limit: 200000,
+                publicPath: '../img/',
+                outputPath: 'static/img/'
+            }
+        }
+    ]
+}
+```
+
 ## 引入antd（配置中最大的坑）
 ```
 npm i antd -D
@@ -155,6 +188,11 @@ npm i babel-plugin-import -D
 import 'antd/dist/antd.css';
 
 -- done --
+```
+
+## 分环境打包配置
+```
+ cnpm i cross-env -D
 ```
 
 ## Redux React-Redux
