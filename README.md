@@ -193,6 +193,9 @@ import 'antd/dist/antd.css';
 ## 分环境打包配置
 ```
  cnpm i cross-env -D
+
+"build:dev": "cross-env NODE_ENV=dev webpack --config build/webpack.dev.config.js"
+
 ```
 
 ## Redux React-Redux
